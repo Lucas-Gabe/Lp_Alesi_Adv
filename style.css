@@ -1,0 +1,234 @@
+/* RESET & GLOBAL STYLES */
+:root {
+    --primary-color: #0A2342; /* Azul escuro profundo da logo */
+    --secondary-color: #C3A159; /* Dourado da logo */
+    --light-gray: #F4F6F9; /* Manter para seções claras ou texto leve */
+    --dark-gray-text: #333; /* Texto padrão para contraste com branco/claro */
+    --text-color-light: #DDD; /* Texto para fundos escuros */
+    --white: #ffffff;
+    --header-height: 70px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-gray-text); /* Cor padrão para textos */
+    background-color: var(--white);
+    overflow-x: hidden; /* Previne scroll horizontal das animações */
+}
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.section { padding: 80px 0; }
+.section-title { text-align: center; margin-bottom: 50px; }
+.section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
+.section-title p { font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+.bg-light { background-color: var(--light-gray); }
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--secondary-color); /* Dourado */
+    color: var(--primary-color); /* Texto escuro no botão dourado */
+    padding: 15px 35px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.cta-button:hover {
+    background-color: #A3854E; /* Dourado um pouco mais escuro ao hover */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* HEADER */
+#header {
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: var(--header-height);
+}
+#header .container { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+.logo { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--primary-color); text-decoration: none; }
+.logo span { font-weight: 400; font-size: 0.9rem; color: var(--secondary-color); } /* Dourado para "Advocacia" */
+.menu { list-style: none; display: flex; gap: 25px; }
+.menu a { text-decoration: none; color: var(--primary-color); font-weight: 500; position: relative; padding: 5px 0; }
+.menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--secondary-color); transition: width 0.3s ease; } /* Dourado no hover do menu */
+.menu a:hover::after { width: 100%; }
+.menu-toggle { display: none; cursor: pointer; }
+
+/* HERO SECTION */
+.hero {
+    background: linear-gradient(rgba(10, 35, 66, 0.9), rgba(10, 35, 66, 0.9)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+    height: 100vh;
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+}
+.hero-text h1 { font-size: 3.2rem; font-weight: 700; margin-bottom: 20px; color: var(--white); line-height: 1.2; }
+.hero-text p { font-size: 1.2rem; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; opacity: 0.9; }
+
+/* ABOUT SECTION */
+.about-content { display: flex; align-items: center; gap: 50px; }
+.about-image {
+    width: 40%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 15px 35px rgba(10,35,66,0.15);
+}
+.about-text { width: 60%; }
+.about-text h2 { font-size: 2.5rem; }
+.about-text h3 { font-size: 1.3rem; color: var(--secondary-color); margin-bottom: 20px; font-weight: 600; }
+.about-text p { margin-bottom: 15px; }
+
+/* ÁREAS DE ATUAÇÃO */
+.cards-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.card {
+    background: var(--white);
+    padding: 35px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    text-align: center;
+    border-bottom: 3px solid transparent;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.4s ease, background-color 0.4s ease;
+    will-change: transform, box-shadow; /* Otimização para animação */
+}
+.card:hover {
+    transform: perspective(1000px) translateY(-25px) scale(1.05) rotateX(4deg) rotateY(-4deg) translateZ(20px);
+    box-shadow: 0 40px 80px rgba(10, 35, 66, 0.45);
+    border-color: var(--secondary-color); /* Borda dourada no hover */
+    background-color: var(--white);
+    cursor: pointer;
+}
+.card h3 { margin-bottom: 15px; font-size: 1.4rem; }
+
+/* DEPOIMENTOS */
+.testimonials-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.testimonial { background-color: var(--light-gray); padding: 30px; border-radius: 10px; border-left: 5px solid var(--secondary-color); } /* Borda dourada */
+.testimonial p { font-style: italic; margin-bottom: 20px; }
+.testimonial h4 { font-weight: 600; color: var(--dark-gray-text); }
+
+/* CTA FINAL */
+.cta-section {
+    background: var(--primary-color); /* Azul escuro */
+    color: var(--text-color-light); /* Texto mais claro para fundo escuro */
+    text-align: center;
+}
+.cta-section h2 { color: var(--secondary-color); /* Título dourado */ font-size: 2.5rem; margin-bottom: 15px; }
+.cta-section p {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+/* FOOTER */
+footer { background: var(--primary-color); /* Azul escuro */ color: var(--text-color-light); padding-top: 60px; }
+.footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid #444; align-items: center; }
+.footer-info .logo { font-size: 1.8rem; margin-bottom: 15px; color: var(--secondary-color); } /* Logo dourada no footer */
+.footer-info .logo span { color: var(--text-color-light); } /* "Advocacia" mais claro */
+.footer-info p { margin-bottom: 10px; }
+.footer-social h3 { color: var(--secondary-color); /* Dourado */ margin-bottom: 15px; font-family: 'Montserrat', sans-serif; }
+.social-icons { display: flex; gap: 20px; }
+.social-icon { transition: transform 0.3s ease; }
+.social-icon:hover { transform: scale(1.15); }
+.instagram-icon path { fill: url(#instagram-gradient); } /* Manter gradiente do Instagram */
+.facebook-icon path { fill: var(--text-color-light); } /* Facebook em tom de cinza claro */
+.footer-bottom { text-align: center; padding: 20px 0; font-size: 0.9rem; }
+
+/* WHATSAPP BUTTON - COM ANIMAÇÃO */
+.whatsapp-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25D366; /* Manter verde do WhatsApp */
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    animation: pulse-whatsapp 2s infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.whatsapp-button:hover {
+    animation: none;
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+@keyframes pulse-whatsapp {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* ANIMAÇÕES AO ROLAR */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Atraso para elementos em sequência */
+.card:nth-child(2), .testimonial:nth-child(2) { transition-delay: 0.1s; }
+.card:nth-child(3), .testimonial:nth-child(3) { transition-delay: 0.2s; }
+.card:nth-child(4) { transition-delay: 0.3s; }
+.card:nth-child(5) { transition-delay: 0.4s; }
+.card:nth-child(6) { transition-delay: 0.5s; }
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    h1, h2 { font-size: 2rem; }
+    .hero-text h1 { font-size: 2.5rem; }
+    .section { padding: 60px 0; }
+
+    /* Mobile Menu */
+    .menu { position: absolute; top: var(--header-height); left: 0; width: 100%; background-color: var(--white); flex-direction: column; align-items: center; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; box-shadow: 0 5px 10px rgba(0,0,0,0.05); }
+    .menu.active { max-height: 300px; }
+    .menu li { width: 100%; text-align: center; }
+    .menu a { padding: 15px 0; display: block; width: 100%; }
+    .menu-toggle { display: block; position: relative; width: 30px; height: 20px; }
+    .hamburger, .hamburger::before, .hamburger::after { content: ''; display: block; background: var(--primary-color); height: 3px; width: 100%; border-radius: 5px; transition: all 0.5s ease-in-out; }
+    .hamburger::before { transform: translateY(-10px); }
+    .hamburger::after { transform: translateY(10px); }
+    .menu-toggle.active .hamburger { transform: translateX(-50px); background: transparent; }
+    .menu-toggle.active .hamburger::before { transform: rotate(45deg) translate(35px, -35px); }
+    .menu-toggle.active .hamburger::after { transform: rotate(-45deg) translate(35px, 31px); }
+
+    .hero { height: auto; padding: 150px 0 100px 0; }
+    .about-content { flex-direction: column; text-align: center; }
+    .about-image { width: 80%; max-width: 300px; margin-bottom: 30px; }
+    .about-text { width: 100%; }
+    .footer-content { flex-direction: column; text-align: center; }
+    .footer-info { margin-bottom: 20px; }
+}
+
+/* UTILITÁRIOS */
+/* Esconde a definição do gradiente SVG que está no HTML */
+.svg-defs {
+    width: 0;
+    height: 0;
+    position: absolute;
+}
